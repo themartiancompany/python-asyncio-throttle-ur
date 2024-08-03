@@ -1,0 +1,24 @@
+pkgbase = python-asyncio-throttle
+	pkgdesc = Simple, easy-to-use throttler for asyncio
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/hallazzang/asyncio-throttle
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	arch = armv7l
+	arch = i686
+	arch = pentium4
+	arch = powerpc
+	arch = mips
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-xdist
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/hallazzang/asyncio-throttle/archive/v1.0.2/python-asyncio-throttle-1.0.2.tar.gz
+	sha512sums = 643005ec2eece8dca28673f60468955b8ce5084c6cd62672bab05327316c9e9a8cc47a6a43b42501e8b0db32e5b636b6911d3e6a270f2d19f173c155c8a77864
+	b2sums = 13d69d17d314ed89eae18b8a3d0542c50ac58a7c280c5bf11e81d52f8358aa78d437e7fe406242b121261a1f8780e13e6aff130e8b28540baf3b67118fa0724c
+
+pkgname = python-asyncio-throttle
