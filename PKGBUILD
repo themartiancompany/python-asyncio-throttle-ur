@@ -77,7 +77,7 @@ build() {
       --no-isolation
   elif [[ "${_pep517}" == 'false' ]]; then
     _setup_opts+=(
-      -O1
+      # -O1
     )
     LANG="en_US.UTF-8" \
     "${_py}" \
@@ -123,7 +123,7 @@ package() {
     "${_py}" \
       -m \
         installer \
-      --destdir="$terdir" \
+      --destdir="${pkgdir}" \
       dist/*.whl
   fi
 }
