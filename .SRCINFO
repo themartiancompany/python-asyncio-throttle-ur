@@ -16,6 +16,7 @@ pkgbase = python-asyncio-throttle
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-xdist
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	source = https://github.com/hallazzang/asyncio-throttle/archive/v1.0.2/python-asyncio-throttle-1.0.2.tar.gz
 	sha512sums = 643005ec2eece8dca28673f60468955b8ce5084c6cd62672bab05327316c9e9a8cc47a6a43b42501e8b0db32e5b636b6911d3e6a270f2d19f173c155c8a77864

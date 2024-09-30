@@ -3,7 +3,13 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 
-_pep517='false'
+_pep517='true'
+_os="$( \
+  uname \
+    -o)"
+if [[ "${_os}" == "Android" ]]; then
+  _pep517="false"
+fi
 _py="python"
 _pkg=asyncio-throttle
 pkgname="${_py}-${_pkg}"
@@ -31,7 +37,7 @@ depends=(
 )
 makedepends=(
   "${_py}-setuptools"
-  # "${_py}-wheel"
+  "${_py}-wheel"
 )
 [[ "${_pep517}" == true ]] && \
   makedepends+=(
@@ -70,11 +76,14 @@ build() {
       --wheel \
       --no-isolation
   elif [[ "${_pep517}" == 'false' ]]; then
+    _setup_opts+=(
+      -O1
+    )
     LANG="en_US.UTF-8" \
     "${_py}" \
       setup.py \
         build \
-          -O1
+          "${_setup_opts[@]}"
   fi
 }
 
