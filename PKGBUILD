@@ -11,6 +11,15 @@ if [[ "${_os}" == "Android" ]]; then
   _pep517="false"
 fi
 _py="python"
+_pyver="$( \
+  "${_py}" \
+    -V | \
+    awk \
+      '{print $2}')"
+_pymajver="${_pyver%.*}"
+_pyminver="${_pymajver#*.}"
+_pynextver="${_pymajver%.*}.$(( \
+  ${_pyminver} + 1))"
 _pkg=asyncio-throttle
 pkgname="${_py}-${_pkg}"
 pkgver=1.0.2
@@ -33,7 +42,8 @@ license=(
   'MIT'
 )
 depends=(
-  "${_py}"
+  "${_py}>=${_pymajver}"
+  "${_py}<${_pynextver}"
 )
 makedepends=(
   "${_py}-setuptools"
