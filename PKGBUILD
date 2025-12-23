@@ -152,6 +152,12 @@ _github_sum='SKIP'
 _github_sig_sum="SKIP"
 _bundle_sum="be0a598ebdb6ebf5246b6235684cd7dc68d2b8dddd947f7d5e6da398baba5c97"
 _bundle_sig_sum="ef4d4e254c2cc60447e68307addfe7dbe4839911ac8a61036eb547c88f767533"
+if [[ "${_evmfs}" == "true" ]]; then
+  if [[ "${_git}" == "true" ]]; then
+    _sum="${_bundle_sum}"
+    _sig_sum="${_sig_sum}"
+  fi
+fi
 # Dvorak
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
@@ -162,15 +168,13 @@ _evmfs_src="${_tarfile}::${_evmfs_uri}"
 _sig_uri="${_evmfs_dir}/${_sig_sum}"
 _sig_src="${_tarfile}.sig::${_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
-  if [[ "${_git}" == "false" ]]; then
-    _src="${_evmfs_src}"
-    source+=(
-      "${_sig_src}"
-    )
-    sha256sums+=(
-      "${_sig_sum}"
-    )
-  fi
+  _src="${_evmfs_src}"
+  source+=(
+    "${_sig_src}"
+  )
+  sha256sums+=(
+    "${_sig_sum}"
+  )
 elif [[ "${_evmfs}" == "false" ]]; then
   if [[ "${_git}" == true ]]; then
     _src="${_tarname}::git+${_url}#${_tag_name}=${_tag}?signed"
