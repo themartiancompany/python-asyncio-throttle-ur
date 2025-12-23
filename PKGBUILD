@@ -155,7 +155,7 @@ _bundle_sig_sum="ef4d4e254c2cc60447e68307addfe7dbe4839911ac8a61036eb547c88f76753
 if [[ "${_evmfs}" == "true" ]]; then
   if [[ "${_git}" == "true" ]]; then
     _sum="${_bundle_sum}"
-    _sig_sum="${_sig_sum}"
+    _sig_sum="${_bundle_sig_sum}"
   fi
 fi
 # Dvorak
