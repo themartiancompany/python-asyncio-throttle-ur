@@ -158,6 +158,11 @@ if [[ "${_evmfs}" == "true" ]]; then
     _sum="${_bundle_sum}"
     _sig_sum="${_bundle_sig_sum}"
   fi
+elif [[ "${_evmfs}" == "false" ]]; then
+  if [[ "${_git}" == "true" ]]; then
+    _sum="SKIP"
+    _sig_sum="SKIP"
+  fi
 fi
 # Dvorak
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
