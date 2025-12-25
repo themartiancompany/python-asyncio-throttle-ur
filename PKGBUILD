@@ -112,6 +112,7 @@ depends=(
   "${_py}<${_pynextver}"
 )
 makedepends=(
+  "${_py}"
   "${_py}-setuptools"
   "${_py}-wheel"
 )
