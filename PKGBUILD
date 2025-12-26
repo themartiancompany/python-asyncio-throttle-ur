@@ -1,7 +1,8 @@
 # SPDX-License-Identifier: AGPL-3.0
 
 #    ----------------------------------------------------------------------
-#    Copyright © 2024, 2025  Pellegrino Prevete
+#    Copyright © 2024, 2025
+                 Pellegrino Prevete
 #
 #    All rights reserved
 #    ----------------------------------------------------------------------
@@ -31,46 +32,6 @@ _pep517='true'
 _os="$(
   uname \
     -o)"
-_evmfs_available="$(
-  command \
-    -v \
-    "evmfs" || \
-    true)"
-if [[ ! -v "_evmfs" ]]; then
-  if [[ "${_evmfs_available}" != "" ]]; then
-    _evmfs="true"
-  elif [[ "${_evmfs_available}" == "" ]]; then
-    _evmfs="false"
-  fi
-fi
-if [[ ! -v "_git" ]]; then
-  if [[ "${_evmfs}" == "true" ]]; then
-    _git="true"
-  elif [[ "${_evmfs}" == "false" ]]; then
-    _git="true"
-  fi
-fi
-if [[ ! -v "_offline" ]]; then
-  _offline="false"
-fi
-if [[ ! -v "_git_service" ]]; then
-  _git_service="gitlab"
-fi
-if [[ ! -v "_archive_format" ]]; then
-  if [[ "${_git}" == "true" ]]; then
-    if [[ "${_evmfs}" == "true" ]]; then
-      _archive_format="bundle"
-    elif [[ "${_evmfs}" == "false" ]]; then
-      _archive_format="git"
-    fi
-  elif [[ "${_git}" == "false" ]]; then
-    if [[ "${_git_service}" == "github" ]]; then
-      _archive_format="zip"
-    elif [[ "${_git_service}" == "gitlab" ]]; then
-      _archive_format="tar.gz"
-    fi
-  fi
-fi
 if [[ "${_os}" == "Android" ]]; then
   _pep517="false"
 fi
