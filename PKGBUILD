@@ -28,8 +28,27 @@
 #     <pellegrinoprevete@gmail.com>
 #     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
+_os="$(
+  uname \
+    -o)"
+_evmfs_available="$(
+  command \
+    -v \
+    "evmfs" || \
+    true)"
+if [[ ! -v "_evmfs" ]]; then
+  if [[ "${_evmfs_available}" != "" ]]; then
+    _evmfs="true"
+  elif [[ "${_evmfs_available}" == "" ]]; then
+    _evmfs="false"
+  fi
+fi
 if [[ ! -v "_git" ]]; then
-  _git="false"
+  if [[ "${_evmfs}" == "true" ]]; then
+    _git="true"
+  elif [[ "${_evmfs}" == "false" ]]; then
+    _git="false"
+  fi
 fi
 if [[ ! -v "_offline" ]]; then
   _offline="false"
@@ -67,7 +86,7 @@ _pyver="$(
       '{print $2}')"
 _pymajver="${_pyver%.*}"
 _pyminver="${_pymajver#*.}"
-_pynextver="${_pymajver%.*}.$(( \
+_pynextver="${_pymajver%.*}.$((
   ${_pyminver} + 1))"
 _pkg=asyncio-throttle
 pkgname="${_py}-${_pkg}"
