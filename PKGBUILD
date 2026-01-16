@@ -155,7 +155,7 @@ sha256sums=()
 _url="${url}"
 _tag="${_commit}"
 _tag_name="commit"
-_tarname="${pkgname}-${_tag}"
+_tarname="${_pkg}-${_tag}"
 _tarfile="${_tarname}.${_archive_format}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
