@@ -59,7 +59,7 @@ fi
 if [[ ! -v "_git_http" ]]; then
   _git_http="${_git_service}.com"
 fi
-if [[ ! -v "_ns" ]]
+if [[ ! -v "_ns" ]]; then
   if [[ "${_git_service}" == "github" ]]; then
     _ns='hallazzang'
   elif [[ "${_git_service}" == "gitlab" ]]; then
