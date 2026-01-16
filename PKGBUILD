@@ -56,6 +56,16 @@ fi
 if [[ ! -v "_git_service" ]]; then
   _git_service="gitlab"
 fi
+if [[ ! -v "_git_http" ]]; then
+  _git_http="${_git_service}.com"
+fi
+if [[ ! -v "_ns" ]]
+  if [[ "${_git_service}" == "github" ]]; then
+    _ns='hallazzang'
+  elif [[ "${_git_service}" == "gitlab" ]]; then
+    _ns="themartiancompany"
+  fi
+fi
 if [[ ! -v "_archive_format" ]]; then
   if [[ "${_git}" == "true" ]]; then
     if [[ "${_evmfs}" == "true" ]]; then
@@ -95,8 +105,7 @@ _commit="1cc886cb3f5ef245b6b7c3a91d2d9b6c42d69646"
 _bundle_commit="268783c564949dc5e5e34c3ef9cf35409cdccfe6"
 pkgrel=7
 pkgdesc='Simple, easy-to-use throttler for asyncio'
-_http='https://github.com'
-_ns='hallazzang'
+_http="https://${_git_http}"
 url="${_http}/${_ns}/${_pkg}"
 arch=(
   'x86_64'
