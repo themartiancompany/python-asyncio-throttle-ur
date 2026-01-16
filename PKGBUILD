@@ -169,8 +169,11 @@ elif [[ "${_evmfs}" == "false" ]]; then
   elif [[ "${_git}" == "false" ]]; then
     if [[ "${_git_service}" == "github" ]]; then
       _sum="${_github_sum}"
+      _sig_sum="${_github_sig_sum}"
     elif [[ "${_git_service}" == "gitlab" ]]; then
       _sum="${_gitlab_sum}"
+      _sig_sum="${_gitlab_sig_sum}"
+    fi
   fi
 fi
 # Dvorak
