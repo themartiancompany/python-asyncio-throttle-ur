@@ -106,7 +106,7 @@ pkgname=(
 pkgver=1.0.2
 _commit="1cc886cb3f5ef245b6b7c3a91d2d9b6c42d69646"
 _bundle_commit="268783c564949dc5e5e34c3ef9cf35409cdccfe6"
-pkgrel=9
+pkgrel=10
 pkgdesc='Simple, easy-to-use throttler for asyncio'
 _http="https://${_git_http}.com"
 url="${_http}/${_ns}/${_pkg}"
@@ -313,7 +313,7 @@ build() {
     )
     LANG="${_lang}" \
     "${_py}" \
-      setup.py \
+      "setup.py" \
         build \
           "${_setup_opts[@]}"
   fi
@@ -334,7 +334,7 @@ check() {
     "test-env"
   "test-env/bin/python" \
     -m \
-      installer \
+      "installer" \
     "dist/"*".whl"
   cd \
     tests
@@ -363,7 +363,7 @@ package() {
   if [[ "${_pep517}" == 'false' ]]; then
     LANG="${_lang}" \
     "${_py}" \
-      setup.py \
+      "setup.py" \
         install \
           "${_install_opts[@]}"
   elif [[ "${_pep517}" == 'true' ]]; then
@@ -371,7 +371,7 @@ package() {
       LANG="${_lang}"
     "${_py}" \
       -m \
-        installer \
+        "installer" \
       "${_installer_opts[@]}" \
       "dist/"*".whl"
   fi
