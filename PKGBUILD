@@ -166,9 +166,7 @@ fi
 _gitlab_sum="SKIP"
 _gitlab_sig_sum="SKIP"
 _github_sum="c199553ca036a44aa5e6df1bf09856bed6c3b7504628d606f282dc0540303fcf"
-_github_sum="991e271602181f135726ba950bf3553edbb66de84be78321792d16908b0b378a"
-_github_sum='SKIP'
-_github_sig_sum="SKIP"
+_github_sig_sum="991e271602181f135726ba950bf3553edbb66de84be78321792d16908b0b378a"
 _bundle_sum="be0a598ebdb6ebf5246b6235684cd7dc68d2b8dddd947f7d5e6da398baba5c97"
 _bundle_sig_sum="ef4d4e254c2cc60447e68307addfe7dbe4839911ac8a61036eb547c88f767533"
 if [[ "${_evmfs}" == "true" ]]; then
@@ -177,7 +175,7 @@ if [[ "${_evmfs}" == "true" ]]; then
     _sig_sum="${_bundle_sig_sum}"
     # Dvorak
     _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-  if [[ "${_git}" == "false" ]]; then
+  elif [[ "${_git}" == "false" ]]; then
     if [[ "${_git_service}" == "github" ]]; then
       _sum="${_github_sum}"
       _sig_sum="${_github_sig_sum}"
