@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 
 #    ----------------------------------------------------------------------
-#    Copyright © 2024, 2025
+#    Copyright © 2024, 2025, 2026
 #                Pellegrino Prevete
 #
 #    All rights reserved
@@ -57,7 +57,7 @@ if [[ ! -v "_git_service" ]]; then
   _git_service="gitlab"
 fi
 if [[ ! -v "_git_http" ]]; then
-  _git_http="${_git_service}.com"
+  _git_http="${_git_service}"
 fi
 if [[ ! -v "_ns" ]]; then
   if [[ "${_git_service}" == "github" ]]; then
@@ -99,13 +99,16 @@ _pyminver="${_pymajver#*.}"
 _pynextver="${_pymajver%.*}.$((
   ${_pyminver} + 1))"
 _pkg=asyncio-throttle
-pkgname="${_py}-${_pkg}"
+pkgbase="${_py}-${_pkg}"
+pkgname=(
+  "${pkgbase}"
+)
 pkgver=1.0.2
 _commit="1cc886cb3f5ef245b6b7c3a91d2d9b6c42d69646"
 _bundle_commit="268783c564949dc5e5e34c3ef9cf35409cdccfe6"
 pkgrel=9
 pkgdesc='Simple, easy-to-use throttler for asyncio'
-_http="https://${_git_http}"
+_http="https://${_git_http}.com"
 url="${_http}/${_ns}/${_pkg}"
 arch=(
   'x86_64'
@@ -162,6 +165,8 @@ if [[ "${_offline}" == "true" ]]; then
 fi
 _gitlab_sum="SKIP"
 _gitlab_sig_sum="SKIP"
+_github_sum="c199553ca036a44aa5e6df1bf09856bed6c3b7504628d606f282dc0540303fcf"
+_github_sum="991e271602181f135726ba950bf3553edbb66de84be78321792d16908b0b378a"
 _github_sum='SKIP'
 _github_sig_sum="SKIP"
 _bundle_sum="be0a598ebdb6ebf5246b6235684cd7dc68d2b8dddd947f7d5e6da398baba5c97"
@@ -170,6 +175,15 @@ if [[ "${_evmfs}" == "true" ]]; then
   if [[ "${_git}" == "true" ]]; then
     _sum="${_bundle_sum}"
     _sig_sum="${_bundle_sig_sum}"
+    # Dvorak
+    _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
+  if [[ "${_git}" == "false" ]]; then
+    if [[ "${_git_service}" == "github" ]]; then
+      _sum="${_github_sum}"
+      _sig_sum="${_github_sig_sum}"
+      # Truocolo
+      _evmfs_ns="0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b"
+    fi
   fi
 elif [[ "${_evmfs}" == "false" ]]; then
   if [[ "${_git}" == "true" ]]; then
@@ -179,14 +193,16 @@ elif [[ "${_evmfs}" == "false" ]]; then
     if [[ "${_git_service}" == "github" ]]; then
       _sum="${_github_sum}"
       _sig_sum="${_github_sig_sum}"
+      # Truocolo
+      _evmfs_ns="0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b"
     elif [[ "${_git_service}" == "gitlab" ]]; then
       _sum="${_gitlab_sum}"
       _sig_sum="${_gitlab_sig_sum}"
+      # Truocolo
+      _evmfs_ns="0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b"
     fi
   fi
 fi
-# Dvorak
-_evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_dir="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}"
