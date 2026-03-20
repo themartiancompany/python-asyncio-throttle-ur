@@ -974,9 +974,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            "python-aiohappyeyeballs-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "python-asyncio-throttle-${{ steps.version.outputs.version }}-${{ matrix.architecture }}.pkg.tar.xz"
           asset_name:
-            "dogeos-android-aiohappyeyeballs-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "dogeos-android-asyncio-throttle-${{ steps.version.outputs.version }}-${{ matrix.architecture }}.pkg.tar.xz"
           asset_content_type:
             application/gzip
   arch_release:
@@ -1688,9 +1688,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            "python-aiohappyeyeballs-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "python-asyncio-throttle-${{ steps.version.outputs.version }}-${{ matrix.architecture }}.pkg.tar.xz"
           asset_name:
-            "dogeos-gnu-python-aiohappyeyeballs-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "dogeos-gnu-python-asyncio-throttle-${{ steps.version.outputs.version }}-${{ matrix.architecture }}.pkg.tar.xz"
           asset_content_type:
             application/gzip
   msys2_release:
@@ -2139,9 +2139,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            "python-aiohappyeyeballs-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "python-asyncio-throttle-${{ steps.version.outputs.version }}-${{ matrix.arch }}.pkg.tar.xz"
           asset_name:
-            "dogeos-windows-aiohappyeyeballs-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "dogeos-windows-asyncio-throttle-${{ steps.version.outputs.version }}-${{ matrix.arch }}.pkg.tar.xz"
           asset_content_type:
             application/gzip
 
